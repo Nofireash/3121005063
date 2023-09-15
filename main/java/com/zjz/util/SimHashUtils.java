@@ -25,7 +25,11 @@ public class SimHashUtils {
 
 
 
-    public static String getSimHash(String str) {
+    public static String generateSimHash(String str) {
+        if (str.length() < 300) {
+            throw new RuntimeException("文本长度小于300");
+        }
+
         //用数组表示特征向量,取128位,从 0 1 2 位开始表示从高位到低位
         int[] v = new int[128];
         //1. 分词（使用了外部依赖hankcs包提供的接口）

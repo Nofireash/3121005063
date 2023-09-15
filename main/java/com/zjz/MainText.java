@@ -18,8 +18,8 @@ public class MainText {
         String resultFileName = args[2];
 
         //由字符串得出对应的simHash值
-        String simHash0 = SimHashUtils.getSimHash(str0);
-        String simHash1 = SimHashUtils.getSimHash(str1);
+        String simHash0 = SimHashUtils.generateSimHash(str0);
+        String simHash1 = SimHashUtils.generateSimHash(str1);
 
         //由simHash值求出相似度
         Double similarity = HammingUtils.getSimilarity(simHash0, simHash1);

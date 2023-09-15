@@ -8,6 +8,11 @@ public class FileUtils {
 
 
     public static String readTxt(String txtPath) {
+
+        if (!txtPath.endsWith("txt")){
+            throw new RuntimeException("文件类型应为txt文件");
+        }
+
         StringBuilder str = new StringBuilder();
         String strLine;
 
@@ -31,6 +36,10 @@ public class FileUtils {
 
 
     public static void writeTxt(String txtElem, String txtPath) {
+
+        if (!txtPath.endsWith("txt")){
+            throw new RuntimeException("文件类型应为txt文件");
+        }
 
         File file = new File(txtPath);
         try (FileWriter fileWriter = new FileWriter(file, true)) {
