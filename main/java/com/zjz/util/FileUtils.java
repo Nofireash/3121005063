@@ -18,6 +18,12 @@ public class FileUtils {
 
         //将txt文件按行读入 str中
         File file = new File(txtPath);
+
+        if (!file.exists()){
+            throw new RuntimeException("文件不存在或路径错误");
+        }
+
+
         try (FileInputStream fileInputStream = new FileInputStream(file);
              InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
              BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
@@ -42,6 +48,11 @@ public class FileUtils {
         }
 
         File file = new File(txtPath);
+
+        if (!file.exists()){
+            throw new RuntimeException("文件不存在或路径错误");
+        }
+
         try (FileWriter fileWriter = new FileWriter(file, true)) {
             fileWriter.write(txtElem);
             fileWriter.write("\r\n");
