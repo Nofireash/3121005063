@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.List;
+import java.util.Objects;
 
 
 public class SimHashUtils {
@@ -32,7 +33,7 @@ public class SimHashUtils {
 
         //用数组表示特征向量,取128位,从 0 1 2 位开始表示从高位到低位
         int[] v = new int[128];
-        //1. 分词（使用了外部依赖hankcs包提供的接口）
+        //1. 分词（使用了外部依赖hanlp包提供的接口）
         //取出所有关键词
         List<String> keywordList = HanLP.extractKeyword(str, str.length());
         //hash
@@ -41,7 +42,7 @@ public class SimHashUtils {
         int i = 0;
         for (String keyword : keywordList) {
         //2. 获取hash值
-            StringBuilder keywordHash = new StringBuilder(getHash(keyword));
+            StringBuilder keywordHash = new StringBuilder(Objects.requireNonNull(getHash(keyword)));
             if (keywordHash.length() < 128) {
                 //hash值可能少于128位，在低位以0补齐
                 int dif = 128 - keywordHash.length();
