@@ -8,7 +8,7 @@ public class HammingUtils {
         int distance = 0;
         if (simHash1.length() != simHash2.length()) {
             //出错，返回-1
-            distance = -1;
+            throw new RuntimeException("汉明距离位数不相同");
         } else {
             for (int i = 0; i < simHash1.length(); i++) {
                 //每一位进行比较
